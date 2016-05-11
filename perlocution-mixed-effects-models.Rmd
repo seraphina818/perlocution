@@ -1,0 +1,169 @@
+---
+title: 'Summary of the Models: Intonation and perlocution'
+author: "Sunwoo Jeong"
+date: "February 15, 2016"
+fontsize: 11pt
+geometry: margin=0.8in
+output: 
+  pdf_document:
+    keep_tex: yes
+---
+
+A combined data set from the polar interrogative-experiment (experiment 1) and the wh-interrogative / imperative / declarative experiment (experiment 2) has been created.
+
+The data frame (dat1) contains all the data from experiment 2, as well as from experiment 3, as long as the data are from stimuli manipulated in intonation.
+
+```{r}
+### Load the combined data
+setwd("/Users/sunwoojeong/Desktop/perlocution_experiment/")
+dat1 <- read.csv('perlocution_combined_data_exp1_exp2.csv')
+```
+
+```{r, echo=FALSE}
+# Recode HRise as Rise, because they are the same
+dat1$intonation <- as.character(dat1$intonation)
+dat1$intonation[dat1$intonation == "H_rise"] <- "Rise"
+dat1$intonation <- as.factor(dat1$intonation)
+
+dat1 <- dat1[dat1$intonation != 'H_Level', ]
+dat1 <- dat1[dat1$intonation != 'L_rise', ]
+```
+
+Setting the most widely applicable default baselines for each predictors.
+```{r, echo=FALSE}
+library(lmerTest)
+library(texreg)
+```
+```{r}
+dat1$intonation <- relevel(dat1$intonation, 'Fall')
+dat1$illocution <- relevel(dat1$illocution, 'request')
+dat1$sentence_type <- relevel (dat1$sentence_type, 'polar_Q')
+```
+
+# Annoyance rating 
+**(base: polar-Q, request illocution, Falling intonation)**
+
+The model for the annoyance rating is as follows:
+```{r}
+m1 <- lmer(annoyance ~ intonation * illocution * sentence_type + (1|speaker) + (1|subject), data = dat1)
+summary(m1)
+screenreg(m1)
+
+# Different baselines could be set for different sentence types
+
+dat1$sentence_type <- relevel (dat1$sentence_type, 'Wh_Q')
+dat1$sentence_type <- relevel (dat1$sentence_type, 'Declarative')
+dat1$sentence_type <- relevel (dat1$sentence_type, 'Imperative')
+dat1$sentence_type <- relevel (dat1$sentence_type, 'polar_Q')
+```
+
+**Notes on the main predictors**
+
+**Intonation**: For polar interrogatives, **annoyance is signalled by: Level > Fall > Rise**.
+
+**Illocution**: If the (polar interrogative) utterance is perceived as **request or accusation** illocutions, the speaker is taken to be significantly **more annoyed** than if the utterance is perceived as information seeking (p < .001 for both).
+
+**Sentence-type**: **Wh-interrogatives** elicit significantly **higher annoyance ratings** (p < .001) than polar interrogatives, overall.
+
+There are significant interactions between intonation, illocution, and sentence type as well. To mention just a few important ones:
+
+**Notes on the two-way interactions**
+
+1. Level contour, when combined with request illocution (all sentence types) or suggestion illocution (imperatives), boosts the annoyance rating (sounds more annoyed).
+
+2. Rising contour occuring with wh-interrogatives boosts the annoyance rating. **This basically means that there's less difference between rising and falling contours for wh-interrogatives in signalling annoyance, than the difference between rising and falling contours for polar-interrogatives.**
+
+3. Invitation illocution occuring with declaratives or with wh-interrogatives lowers the annoyance rating.
+
+**Notes on the three-way interactions**
+
+4. (High) Rising intonation in declaratives and wh-interrogatives, if perceived to be invitations, signal significantly more annoyance. **This basically means that the above-mentioned reduction in gap between rising and falling contours for wh-interrogatives is even stronger when the illocution is taken to be invitation.**
+
+
+# Authority rating 
+**(base: polar-Q, request illocution, Falling intonation)**
+
+The model for the annoyance rating is as follows:
+```{r}
+m2 <- lmer(authority ~ intonation * illocution * sentence_type + (1|speaker) + (1|subject), data = dat1)
+summary(m2)
+screenreg(m2)
+
+# Relevel intonation to enable 3-way comparison between them
+
+dat1$intonation <- relevel(dat1$intonation, 'Level')
+m2_2 <- lmer(authority ~ intonation * illocution * sentence_type + (1|speaker) + (1|subject), data = dat1)
+summary(m2_2)
+screenreg(m2_2)
+
+dat1$intonation <- relevel(dat1$intonation, 'Fall')
+```
+
+**Notes on the main predictors**
+
+**Intonation**: For polar interrogatives, authority is signalled by: **Fall > Level > Rise**.
+
+**Illocution**: Again, if the utterance is perceived as **request or accusation** illocutions, the speaker is taken to be significantly **more authoritative** than if the utterance is perceived as information seeking (p < .001 for both).
+
+**Sentence-type**: Again, **wh-interrogatives** elicit significantly **higher authority** ratings (p < .001).
+
+**Notes on the two-way interactions**
+
+1. Rising contour, when combined with the declarative sentence type, lowers the authority ratings (specifically for info_s illocutions).
+
+2. Request illocution, when conveyed by the declarative sentence type, signal significantly more authority than when conveyed by other sentence types.
+
+
+# Politeness rating 
+**(base: polar-Q, request illocution, Falling intonation)**
+
+Model for the politeness rating are as follows:
+```{r}
+m3 <- lmer(polite ~ intonation * illocution * sentence_type + (1|speaker) + (1|subject), data = dat1)
+summary(m3)
+screenreg(m3)
+```
+
+**Notes on the main predictors**
+
+**Intonation**: For polar interrogatives, politeness is signalled by: **Rise > Level, Fall**.
+
+**Illocution**: If the utterance is perceived as **request or accusation** illocutions, the speaker is taken to be significantly **less polite** than if the utterance is perceived as information seeking (p < .001 for both).
+
+**Sentence-type**: **Wh-interrogatives** elicit significantly **lower politeness** ratings (p < .001).
+
+**Notes on the two-way interactions**
+
+1. Rises in wh-interrogatives signal less politeness. **Again, this basically means that there's less difference between rising and falling contours for wh-interrogatives in signalling politeness, than the difference between rising and falling contours for polar-interrogatives.**
+
+2. Invitation and requests in wh-interrogatives boosts the politeness rating.
+
+**Notes on the three-way interactions**
+
+3. But rising invitations in wh-interrogatives lowers the politeness rating.
+
+
+# Stance rating 
+**(base: polar-Q, request illocution, Falling intonation)**
+
+Model for the stance rating are as follows:
+```{r}
+m4 <- lmer(stance ~ intonation * illocution * sentence_type + (1|speaker) + (1|subject), data = dat1)
+summary(m4)
+screenreg(m4)
+```
+
+**Intonation**: For polar interrogatives, positive stance is signalled by: **Rise > Level, Fall**.
+
+**Illocution**: If the utterance is perceived as **accusation** illocutions, the speaker is taken to signal significantly more **negative stance** than if the utterance is perceived as information seeking (p < .001).
+
+**Sentence-type**: **Wh-interrogatives** elicit significantly **lower stance** ratings (p < .001).
+
+**Notes on the two-way interactions**
+
+1. Rising intonation combined with invitation illocution boosts the positive stance rating.
+
+2. Rises in wh-interrogatives signal less positive stance. **Again, this basically means that there's less difference between rising and falling contours for wh-interrogatives in signalling positive stance, than the difference between rising and falling contours for polar-interrogatives.**
+
+3. Invitation illocution conveyed by wh-interrogatives boosts positive stance rating.
+
