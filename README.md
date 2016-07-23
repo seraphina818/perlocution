@@ -10,6 +10,7 @@ Jeong, Sunwoo and Christopher Potts. 2016. [Intonational sentence-type conventio
 * `perlocution-data-visualization.R`: R scripts for creating the plots in the paper
 * `perlocution-mixed-effects-models.Rmd`: R code for fitting the mixed effects models in the paper
 * `jeong-potts-salt26.pdf`: local copy of the current (pre-conference) version of the paper
+* `stimuli-samples.zip`: sample audiofiles of the stimuli used in the experiments
 
 ## Sentence stimuli used in the experiments
 
