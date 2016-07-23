@@ -15,7 +15,8 @@ Jeong, Sunwoo and Christopher Potts. 2016. [Intonational sentence-type conventio
 
 ### polar interrogatives
 
-**Information seeking bias**: *Are armadillos mammals?*
+**Info-seeking bias**: 
+*Are armadillos mammals?*
 *Do manatees have molars?*
 *Did Maria bring those bananas?*
 *Do ants sleep?*
