@@ -11,3 +11,10 @@ Jeong, Sunwoo and Christopher Potts. 2016. [Intonational sentence-type conventio
 * `perlocution-mixed-effects-models.Rmd`: R code for fitting the mixed effects models in the paper
 * `jeong-potts-salt26.pdf`: local copy of the current (pre-conference) version of the paper
 
+## Sentence stimuli used in the experiments
+
+* `polar interrogatives`: information seeking
+Are armadillos mammals?
+Do manatees have molars?
+Did Maria bring those bananas?
+Do ants sleep?
