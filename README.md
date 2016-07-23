@@ -28,3 +28,10 @@ Jeong, Sunwoo and Christopher Potts. 2016. [Intonational sentence-type conventio
 *Do you wanna grab a bite?*
 *Do you wanna play games?*
 *Do you wanna go for a run?*
+
+#### Request bias
+
+  \item Can you open the door?
+  \item Can you close the window?
+  \item Can you carry this box?
+  \item Can you lend me some money?
