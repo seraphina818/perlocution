@@ -15,19 +15,16 @@ Jeong, Sunwoo and Christopher Potts. 2016. [Intonational sentence-type conventio
 
 ### polar interrogatives
 
-**information seeking bias**
+#### Information seeking bias
 
 *Are armadillos mammals?*
 *Do manatees have molars?*
 *Did Maria bring those bananas?*
 *Do ants sleep?*
 
-**invitation bias**
+#### Invitation bias
 
 *Do you wanna go to the movies?*
-
 *Do you wanna grab a bite?*
-
 *Do you wanna play games?*
-
 *Do you wanna go for a run?*
