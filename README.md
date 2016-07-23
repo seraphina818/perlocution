@@ -13,8 +13,14 @@ Jeong, Sunwoo and Christopher Potts. 2016. [Intonational sentence-type conventio
 
 ## Sentence stimuli used in the experiments
 
-* `polar interrogatives`: information seeking
+### polar interrogatives: information seeking bias
 Are armadillos mammals?
 Do manatees have molars?
 Did Maria bring those bananas?
 Do ants sleep?
+
+### polar interrogatives: invitation bias
+Do you wanna go to the movies?
+Do you wanna grab a bite?
+Do you wanna play games?
+Do you wanna go for a run?
